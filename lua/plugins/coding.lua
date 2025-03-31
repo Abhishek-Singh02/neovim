@@ -9,7 +9,7 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
-        cmd = { "TSUpadateSync" },
+        cmd = { "TSUpdateSync" },
         opts = function()
             return {
                 sync_install = false,
