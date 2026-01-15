@@ -150,9 +150,11 @@ return {
             -- picker
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>ff", function() Snacks.picker.files({ finder = "files" }) end, desc = "Find Files" },
-            { "<leader>gf", function() Snacks.picker.git_files({ finder = "files"}) end, desc = "Find Git Files" },
+            { "<leader>gf", function() Snacks.picker.git_files({ finder = "git_files"}) end, desc = "Find Git Files" },
+            { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git logs" },
+            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
             { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-            { "<leader>of", function() Snacks.picker.recent({ finder = "files" }) end, desc = "Recent" },
+            { "<leader>of", function() Snacks.picker.recent({ finder = "recent_files", format = "file" }) end, desc = "Recent" },
             { "<leader>cf", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
             { "<leader>lg", function() Snacks.picker.grep() end, desc = "Grep" },
             { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
