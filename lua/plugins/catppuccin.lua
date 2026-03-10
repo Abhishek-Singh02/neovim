@@ -11,6 +11,7 @@ return {
             noice = true,
             snacks = true,
             which_key = true,
+            blink_cmp = true,
             custom_highlights = function(colors)
                 local u = require("catppuccin.utils.colors")
                 return {
@@ -29,5 +30,5 @@ return {
             require("catppuccin").setup(opts)
             vim.cmd.colorscheme("catppuccin-mocha")
         end,
-    }
+    },
 }
