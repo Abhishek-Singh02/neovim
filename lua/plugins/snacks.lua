@@ -13,34 +13,54 @@ return {
                 enabled = true,
                 preset = {
                     keys = {
-                        { icon = " ", key = "ff", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                        {
+                            icon = " ",
+                            key = "ff",
+                            desc = "Find File",
+                            action = ":lua Snacks.dashboard.pick('files')",
+                        },
                         { icon = " ", key = "nf", desc = "New File", action = ":ene | startinsert" },
-                        { icon = " ", key = "lg", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                        { icon = " ", key = "of", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                        {
+                            icon = " ",
+                            key = "lg",
+                            desc = "Find Text",
+                            action = ":lua Snacks.dashboard.pick('live_grep')",
+                        },
+                        {
+                            icon = " ",
+                            key = "of",
+                            desc = "Recent Files",
+                            action = ":lua Snacks.dashboard.pick('oldfiles')",
+                        },
+                        {
+                            icon = " ",
+                            key = "c",
+                            desc = "Config",
+                            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+                        },
                         { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                     },
-                }
+                },
             },
-            lazygit = { 
+            lazygit = {
                 enabled = true,
-                configure =  false
+                configure = false,
             },
             indent = {
-                    indent = {
-                        enabled = false,
-                    },
-                    chunk = {
-                        enabled = true,
-                        char = {
-                        horizontal = '─',
-                        vertical = '│',
-                        corner_top = '╭',
-                        corner_bottom = '╰',
-                        arrow = '─',
-                        },
+                indent = {
+                    enabled = false,
+                },
+                chunk = {
+                    enabled = true,
+                    char = {
+                        horizontal = "─",
+                        vertical = "│",
+                        corner_top = "╭",
+                        corner_bottom = "╰",
+                        arrow = "─",
                     },
                 },
+            },
             input = { enabled = true },
             quickfile = { enabled = true },
             scope = { enabled = true },
@@ -91,11 +111,17 @@ return {
                             box = "horizontal",
                             backdrop = false,
                             width = 0.8,
-                            height = 0.9,
+                            height = 0.75,
                             border = "none",
                             {
                                 box = "vertical",
-                                { win = "input", height = 1, border = "rounded", title = "{title} {live} {flags}", title_pos = "center" },
+                                {
+                                    win = "input",
+                                    height = 1,
+                                    border = "rounded",
+                                    title = "{title} {live} {flags}",
+                                    title_pos = "center",
+                                },
                                 { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
                             },
                             {
@@ -106,91 +132,258 @@ return {
                                 title_pos = "center",
                             },
                         },
-                    }
+                    },
                 },
                 win = {
                     input = {
                         keys = {
-                            ["<Esc>"] = {  "close", mode = { "n" } },
+                            ["<Esc>"] = { "close", mode = { "n" } },
                             ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
                             ["<a-i>"] = { "toggle_ignored", mode = { "i", "n" } },
-                            ["J"] = {  "preview_scroll_down", mode = { "n" } },
-                            ["K"] = {  "preview_scroll_up", mode = { "n" } },
-                            ["H"] = {  "preview_scroll_left", mode = { "n" } },
-                            ["L"] = {  "preview_scroll_right", mode = { "n" } },
-
-                        }
-                    }
+                            ["J"] = { "preview_scroll_down", mode = { "n" } },
+                            ["K"] = { "preview_scroll_up", mode = { "n" } },
+                            ["H"] = { "preview_scroll_left", mode = { "n" } },
+                            ["L"] = { "preview_scroll_right", mode = { "n" } },
+                        },
+                    },
                 },
             },
-            scratch = { enabled = true }
-
-            },
+            scratch = { enabled = true },
+        },
         keys = {
             -- buffers
-            { "<leader>bd",  function() Snacks.bufdelete() end, desc = 'Delete buffer'},
-            { "<leader>bD",  function() Snacks.bufdelete( { force = true  } ) end, desc = 'Force Delete buffer'},
-            { "<leader>bda",  function() Snacks.bufdelete.all() end, desc = 'Delete all buffers'},
-            { "<leader>bdo",  function() Snacks.bufdelete.other() end, desc = 'Delete other buffers'},
-
+            {
+                "<leader>bd",
+                function()
+                    Snacks.bufdelete()
+                end,
+                desc = "Delete buffer",
+            },
+            {
+                "<leader>bD",
+                function()
+                    Snacks.bufdelete({ force = true })
+                end,
+                desc = "Force Delete buffer",
+            },
+            {
+                "<leader>bda",
+                function()
+                    Snacks.bufdelete.all()
+                end,
+                desc = "Delete all buffers",
+            },
+            {
+                "<leader>bdo",
+                function()
+                    Snacks.bufdelete.other()
+                end,
+                desc = "Delete other buffers",
+            },
 
             -- lazygit
-            { "<leader>gg",  function() Snacks.lazygit.open() end, desc = 'Open lazygit'},
+            {
+                "<leader>gg",
+                function()
+                    Snacks.lazygit.open()
+                end,
+                desc = "Open lazygit",
+            },
 
             -- notifications
-            { "<leader>n", function()
+            {
+                "<leader>n",
+                function()
                     if Snacks.config.picker and Snacks.config.picker.enabled then
-                    Snacks.picker.notifications()
+                        Snacks.picker.notifications()
                     else
-                    Snacks.notifier.show_history()
+                        Snacks.notifier.show_history()
                     end
                 end,
-                desc = "Notification History" 
+                desc = "Notification History",
             },
-            { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+            {
+                "<leader>un",
+                function()
+                    Snacks.notifier.hide()
+                end,
+                desc = "Dismiss All Notifications",
+            },
 
             -- picker
-            { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-            { "<leader>ff", function() Snacks.picker.files({ finder = "files" }) end, desc = "Find Files" },
-            { "<leader>gf", function() Snacks.picker.git_files({ finder = "git_files"}) end, desc = "Find Git Files" },
-            { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git logs" },
-            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-            { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-            { "<leader>of", function() Snacks.picker.recent({ finder = "recent_files", format = "file" }) end, desc = "Recent" },
-            { "<leader>cf", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-            { "<leader>lg", function() Snacks.picker.grep() end, desc = "Grep" },
-            { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+            {
+                "<leader>bb",
+                function()
+                    Snacks.picker.buffers()
+                end,
+                desc = "Buffers",
+            },
+            {
+                "<leader>ff",
+                function()
+                    Snacks.picker.files({ finder = "files" })
+                end,
+                desc = "Find Files",
+            },
+            {
+                "<leader>gf",
+                function()
+                    Snacks.picker.git_files({ finder = "git_files" })
+                end,
+                desc = "Find Git Files",
+            },
+            {
+                "<leader>gl",
+                function()
+                    Snacks.picker.git_log()
+                end,
+                desc = "Git logs",
+            },
+            {
+                "<leader>gs",
+                function()
+                    Snacks.picker.git_status()
+                end,
+                desc = "Git Status",
+            },
+            {
+                "<leader>fp",
+                function()
+                    Snacks.picker.projects()
+                end,
+                desc = "Projects",
+            },
+            {
+                "<leader>of",
+                function()
+                    Snacks.picker.recent({ finder = "recent_files", format = "file" })
+                end,
+                desc = "Recent",
+            },
+            {
+                "<leader>cf",
+                function()
+                    Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+                end,
+                desc = "Find Config File",
+            },
+            {
+                "<leader>lg",
+                function()
+                    Snacks.picker.grep()
+                end,
+                desc = "Grep",
+            },
+            {
+                "<leader>sw",
+                function()
+                    Snacks.picker.grep_word()
+                end,
+                desc = "Visual selection or word",
+                mode = { "n", "x" },
+            },
 
-            { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics (picker)" },
+            {
+                "<leader>sd",
+                function()
+                    Snacks.picker.diagnostics()
+                end,
+                desc = "Diagnostics (picker)",
+            },
 
             -- LSP
-            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-            { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-            { "<leader>gr", function() Snacks.picker.lsp_references() end, desc = "References" },
-            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-            { "<leader>ds", function() Snacks.picker.lsp_symbols() end, desc = "Document LSP Symbols" },
-            { "<leader>ws", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace LSP Symbols" },
+            {
+                "gd",
+                function()
+                    Snacks.picker.lsp_definitions()
+                end,
+                desc = "Goto Definition",
+            },
+            {
+                "gD",
+                function()
+                    Snacks.picker.lsp_declarations()
+                end,
+                desc = "Goto Declaration",
+            },
+            {
+                "<leader>gr",
+                function()
+                    Snacks.picker.lsp_references()
+                end,
+                desc = "References",
+            },
+            {
+                "gi",
+                function()
+                    Snacks.picker.lsp_implementations()
+                end,
+                desc = "Goto Implementation",
+            },
+            {
+                "gt",
+                function()
+                    Snacks.picker.lsp_type_definitions()
+                end,
+                desc = "Goto T[y]pe Definition",
+            },
+            {
+                "<leader>ds",
+                function()
+                    Snacks.picker.lsp_symbols()
+                end,
+                desc = "Document LSP Symbols",
+            },
+            {
+                "<leader>ws",
+                function()
+                    Snacks.picker.lsp_workspace_symbols()
+                end,
+                desc = "Workspace LSP Symbols",
+            },
 
             -- Other
-            { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-            { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-            { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-            { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
-
+            {
+                "<leader>z",
+                function()
+                    Snacks.zen()
+                end,
+                desc = "Toggle Zen Mode",
+            },
+            {
+                "<leader>cR",
+                function()
+                    Snacks.rename.rename_file()
+                end,
+                desc = "Rename File",
+            },
+            {
+                "<leader>.",
+                function()
+                    Snacks.scratch()
+                end,
+                desc = "Toggle Scratch Buffer",
+            },
+            {
+                "<leader>S",
+                function()
+                    Snacks.scratch.select()
+                end,
+                desc = "Select Scratch Buffer",
+            },
         },
         init = function()
             vim.api.nvim_create_autocmd("User", {
-            pattern = "VeryLazy",
-            callback = function()
-                Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-                Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-                Snacks.toggle.diagnostics():map("<leader>ud")
-                Snacks.toggle.line_number():map("<leader>ul")
-                Snacks.toggle.indent():map("<leader>ut")
-                Snacks.toggle.dim():map("<leader>uD")
-            end,
+                pattern = "VeryLazy",
+                callback = function()
+                    Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+                    Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+                    Snacks.toggle.diagnostics():map("<leader>ud")
+                    Snacks.toggle.line_number():map("<leader>ul")
+                    Snacks.toggle.indent():map("<leader>ut")
+                    Snacks.toggle.dim():map("<leader>uD")
+                end,
             })
         end,
-    }
+    },
 }
