@@ -48,6 +48,13 @@ map("n", "<leader>Y", '"+Y')
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- diagnostics (]d and [d are core defaults on 0.10+, do not rebind)
+map("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostics to loclist" })
+
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
