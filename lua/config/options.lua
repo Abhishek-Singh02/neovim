@@ -4,6 +4,8 @@ local g = vim.g
 -------------------------------------- globals -----------------------------------------
 g.transparency = true
 g.mapleader = " "
+g.maplocalleader = "\\"
+g.have_nerd_font = true
 -------------------------------------- options -----------------------------------------
 opt.laststatus = 3
 opt.showmode = false
@@ -73,8 +75,9 @@ opt.pumheight = 12 -- Maximum number of entries in a popup
 opt.scrolloff = 8 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.sidescrolloff = 8 -- Columns of context
-opt.spelllang = { "en" }
+opt.spelllang = "en_us" -- 'spell' is enabled per-filetype in autocmds.lua
 opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winborder = "rounded" -- default border for all floating windows (0.11+)
 opt.winminwidth = 7 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
