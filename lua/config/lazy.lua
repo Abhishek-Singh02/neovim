@@ -18,5 +18,6 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  checker = { enabled = true },
+  -- `checker` intentionally off: it hits the network every startup and
+  -- fights the pinned lazy-lock.json.
 })
