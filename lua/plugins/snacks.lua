@@ -42,9 +42,11 @@ return {
                     },
                 },
             input = { enabled = true },
+            quickfile = { enabled = true },
+            scope = { enabled = true },
             picker = {
                 enabled = true,
-                matchers = {
+                matcher = {
                     fuzzy = true, -- use fuzzy matching
                     smartcase = true, -- use smartcase
                     ignorecase = true, -- use ignorecase
@@ -159,10 +161,12 @@ return {
             { "<leader>lg", function() Snacks.picker.grep() end, desc = "Grep" },
             { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 
+            { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics (picker)" },
+
             -- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
             { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-            { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+            { "<leader>gr", function() Snacks.picker.lsp_references() end, desc = "References" },
             { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
             { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
             { "<leader>ds", function() Snacks.picker.lsp_symbols() end, desc = "Document LSP Symbols" },
@@ -184,7 +188,7 @@ return {
                 Snacks.toggle.diagnostics():map("<leader>ud")
                 Snacks.toggle.line_number():map("<leader>ul")
                 Snacks.toggle.indent():map("<leader>ut")
-                Snacks.toggle.dim():map("<leader>ud")
+                Snacks.toggle.dim():map("<leader>uD")
             end,
             })
         end,
