@@ -7,7 +7,11 @@ return {
         event = "VeryLazy",
         opts = {
             options = {
-                theme = "catppuccin",
+                -- catppuccin ships catppuccin-nvim / -mocha / -latte / ...;
+                -- there is no plain "catppuccin" theme, and lualine silently
+                -- falls back to "auto" when it cannot find one.
+                -- catppuccin-nvim follows whatever flavour is active.
+                theme = "catppuccin-nvim",
                 globalstatus = true,
                 disabled_filetypes = {
                     statusline = {
