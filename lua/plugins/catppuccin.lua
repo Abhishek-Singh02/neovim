@@ -4,14 +4,20 @@ return {
         name = "catppuccin",
         priority = 1000,
         opts = {
-            dashboard = true,
-            mason = true,
-            mini = true,
-            neotree = true,
-            noice = true,
-            snacks = true,
-            which_key = true,
-            blink_cmp = true,
+            transparent_background = true,
+            integrations = {
+                blink_cmp = true,
+                snacks = true,
+                noice = true,
+                neotree = true,
+                mason = true,
+                mini = true,
+                which_key = true,
+                dashboard = true,
+                treesitter = true,
+                gitsigns = true,
+                markdown = true,
+            },
             custom_highlights = function(colors)
                 local u = require("catppuccin.utils.colors")
                 return {
@@ -24,7 +30,6 @@ return {
                     },
                 }
             end,
-            transparent_background = true,
         },
         config = function(_, opts)
             require("catppuccin").setup(opts)
