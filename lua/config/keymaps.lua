@@ -47,6 +47,8 @@ map("n", "<leader>Y", '"+Y')
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- rename
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 
