@@ -167,6 +167,13 @@ return {
                 desc = "Force Delete buffer",
             },
             {
+                "<leader>BD",
+                function()
+                    Snacks.bufdelete.all()
+                end,
+                desc = "Delete all buffers",
+            },
+            {
                 "<leader>bda",
                 function()
                     Snacks.bufdelete.all()
