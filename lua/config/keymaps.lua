@@ -47,9 +47,8 @@ map("n", "<leader>Y", '"+Y')
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
-
--- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+-- rename
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 
 -- diagnostics (]d and [d are core defaults on 0.10+, do not rebind)
 map("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
